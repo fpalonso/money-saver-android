@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Money Saver</string>
+    <string name="account_name">Name</string>
 </resources>
