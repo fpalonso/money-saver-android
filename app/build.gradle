@@ -27,7 +27,7 @@ android {
 
 dependencies {
     def room_version = "2.1.0"
-    def dagger_version = "2.11"
+    def dagger_version = "2.22"
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
