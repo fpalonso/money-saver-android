@@ -8,6 +8,7 @@ import es.fpalonso.moneysaver.data.Account
 
 @Dao
 interface AccountDao {
+
     @Query("SELECT * FROM Account")
     fun getAll(): LiveData<List<Account>>
 

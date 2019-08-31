@@ -3,7 +3,7 @@ package es.fpalonso.moneysaver.ui
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import es.fpalonso.moneysaver.di.DaggerAppComponent
-import es.fpalonso.moneysaver.di.ViewModelFactory
+import es.fpalonso.moneysaver.viewmodel.ViewModelFactory
 import es.fpalonso.moneysaver.viewmodel.AccountViewModel
 import javax.inject.Inject
 
