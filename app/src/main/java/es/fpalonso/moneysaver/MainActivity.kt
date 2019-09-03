@@ -1,11 +1,7 @@
 package es.fpalonso.moneysaver
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.lifecycle.ViewModel
-import es.fpalonso.moneysaver.di.DaggerAppComponent
-import es.fpalonso.moneysaver.viewmodel.AccountViewModel
-import javax.inject.Inject
+import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
 

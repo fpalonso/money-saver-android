@@ -1,9 +1,20 @@
 package es.fpalonso.moneysaver.di
 
+import android.content.Context
+import dagger.BindsInstance
 import dagger.Component
-import es.fpalonso.moneysaver.ui.AccountDetailsFragment
+import javax.inject.Singleton
 
-@Component(modules = [DataModule::class, ViewModelModule::class])
+@Singleton
+@Component(
+    modules = [AppModule::class,
+        DataModule::class]
+)
 interface AppComponent {
-    fun inject(accountDetailsFragment: AccountDetailsFragment)
+
+    @Component.Factory
+    interface Factory {
+
+        fun create(@BindsInstance appContext: Context): AppComponent
+    }
 }

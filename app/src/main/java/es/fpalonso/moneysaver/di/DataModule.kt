@@ -1,41 +1,58 @@
 package es.fpalonso.moneysaver.di
 
-import android.app.Application
+import android.content.Context
 import androidx.room.Room
 import dagger.Module
 import dagger.Provides
-import es.fpalonso.moneysaver.data.source.AccountRepository
-import es.fpalonso.moneysaver.data.source.local.AccountDao
-import es.fpalonso.moneysaver.data.source.local.AccountLocalDataSource
-import es.fpalonso.moneysaver.data.source.local.AppDatabase
+import es.fpalonso.moneysaver.data.source.AppDatabase
+import es.fpalonso.moneysaver.data.source.TransactionRepository
+import es.fpalonso.moneysaver.data.source.local.TransactionDao
+import es.fpalonso.moneysaver.data.source.local.TransactionLocalDataSource
 import java.util.concurrent.Executor
 import java.util.concurrent.Executors
 import javax.inject.Singleton
 
-@Suppress("unused")
 @Module
-@Singleton
-abstract class DataModule(private val application: Application) {
+abstract class DataModule {
+
     @Provides
-    fun database(): AppDatabase {
-        return Room.databaseBuilder(application, AppDatabase::class.java, "MoneySaver.db").build()
+    @Singleton
+    fun provideDb(appContext: Context): AppDatabase {
+        return Room.databaseBuilder(appContext, AppDatabase::class.java, "MoneySaver.db").build()
     }
 
     @Provides
-    fun accountDao(db: AppDatabase): AccountDao {
-        return db.accountDao()
+    @Singleton
+    fun provideTransactionDao(db: AppDatabase): TransactionDao {
+        return db.transactionDao()
     }
 
     @Provides
-    fun accountLocalDataSource(dao: AccountDao): AccountLocalDataSource {
-        return AccountLocalDataSource(dao)
+    @Singleton
+    fun provideDataTaskExecutor(): Executor {
+        return Executors.newFixedThreadPool(TASK_EXECUTOR_THREAD_POOL_SIZE)
     }
 
     @Provides
-    fun accountRepositoryTaskExecutor(): Executor = Executors.newSingleThreadExecutor()
+    @Singleton
+    fun provideTransactionLocalDataSource(
+        transactionDao: TransactionDao,
+        taskExecutor: Executor
+    ): TransactionLocalDataSource {
+        return TransactionLocalDataSource(transactionDao, taskExecutor)
+    }
 
     @Provides
-    fun accountRepository(localDataSource: AccountLocalDataSource, taskExecutor: Executor): AccountRepository {
-        return AccountRepository(localDataSource, taskExecutor)
+    @Singleton
+    fun transactionRepository(
+        localDataSource: TransactionLocalDataSource
+    ): TransactionRepository {
+        return TransactionRepository(localDataSource)
+    }
+
+    companion object {
+
+        @JvmStatic
+        val TASK_EXECUTOR_THREAD_POOL_SIZE = 4
     }
 }
