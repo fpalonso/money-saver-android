@@ -15,5 +15,5 @@ interface TransactionModule {
     @Binds
     @IntoMap
     @ViewModelKey(TransactionViewModel::class)
-    fun provideTransactionViewModel(transactionViewModel: TransactionViewModel): ViewModel
+    fun bindTransactionViewModel(transactionViewModel: TransactionViewModel): ViewModel
 }
