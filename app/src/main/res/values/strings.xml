@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Money Saver</string>
     <string name="account_name">Name</string>
+    <string name="amount">Amount</string>
+    <string name="date">Date</string>
+    <string name="description">Description</string>
 </resources>
