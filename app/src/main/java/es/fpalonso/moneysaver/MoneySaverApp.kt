@@ -1,24 +1,12 @@
 package es.fpalonso.moneysaver
 
-import android.app.Application
 import dagger.android.AndroidInjector
-import dagger.android.DispatchingAndroidInjector
-import dagger.android.HasAndroidInjector
+import dagger.android.DaggerApplication
 import es.fpalonso.moneysaver.di.DaggerAppComponent
-import javax.inject.Inject
 
-class MoneySaverApp : Application(), HasAndroidInjector {
-    @Inject lateinit var androidInjector: DispatchingAndroidInjector<Any>
+class MoneySaverApp : DaggerApplication() {
 
-    override fun onCreate() {
-        super.onCreate()
-        DaggerAppComponent
-            .factory()
-            .create(this)
-            .inject(this)
-    }
-
-    override fun androidInjector(): AndroidInjector<Any> {
-        return androidInjector
+    override fun applicationInjector(): AndroidInjector<out DaggerApplication> {
+        return DaggerAppComponent.factory().create(this)
     }
 }

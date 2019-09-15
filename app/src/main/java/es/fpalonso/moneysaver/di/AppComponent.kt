@@ -1,9 +1,8 @@
 package es.fpalonso.moneysaver.di
 
-import android.content.Context
-import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjectionModule
+import dagger.android.AndroidInjector
 import es.fpalonso.moneysaver.MoneySaverApp
 import javax.inject.Singleton
 
@@ -14,13 +13,8 @@ import javax.inject.Singleton
         AndroidInjectionModule::class
     ]
 )
-interface AppComponent {
-
-    fun inject(app: MoneySaverApp)
+interface AppComponent : AndroidInjector<MoneySaverApp> {
 
     @Component.Factory
-    interface Factory {
-
-        fun create(@BindsInstance appContext: Context): AppComponent
-    }
+    interface Factory : AndroidInjector.Factory<MoneySaverApp>
 }
