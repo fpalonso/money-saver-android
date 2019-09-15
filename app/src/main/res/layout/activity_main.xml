@@ -8,7 +8,8 @@
 
     <fragment
             android:layout_width="match_parent"
-            android:layout_height="match_parent" android:name="es.fpalonso.moneysaver.ui.AccountDetailsFragment"
+            android:layout_height="match_parent"
+            android:name="es.fpalonso.moneysaver.transaction.details.TransactionDetailsFragment"
             android:id="@+id/fragment" app:layout_constraintTop_toTopOf="parent"
             android:layout_marginTop="8dp" app:layout_constraintStart_toStartOf="parent"
             android:layout_marginLeft="8dp" android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent"
