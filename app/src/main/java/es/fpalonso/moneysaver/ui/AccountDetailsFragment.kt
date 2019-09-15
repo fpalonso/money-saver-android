@@ -5,12 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProviders
 import es.fpalonso.moneysaver.R
 //import es.fpalonso.moneysaver.di.DaggerAppComponent
-import es.fpalonso.moneysaver.viewmodel.ViewModelFactory
-import es.fpalonso.moneysaver.viewmodel.AccountViewModel
-import javax.inject.Inject
 
 class AccountDetailsFragment : Fragment() {
 

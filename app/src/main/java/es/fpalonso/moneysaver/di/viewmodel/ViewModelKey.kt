@@ -1,4 +1,4 @@
-package es.fpalonso.moneysaver.di
+package es.fpalonso.moneysaver.di.viewmodel
 
 import androidx.lifecycle.ViewModel
 import dagger.MapKey

@@ -1,4 +1,4 @@
-package es.fpalonso.moneysaver.viewmodel
+package es.fpalonso.moneysaver.di.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
