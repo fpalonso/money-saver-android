@@ -9,6 +9,7 @@ import dagger.Module
 import dagger.Provides
 import es.fpalonso.moneysaver.data.source.AppDatabase
 import es.fpalonso.moneysaver.data.source.TransactionDataSource
+import es.fpalonso.moneysaver.data.source.DefaultTransactionRepository
 import es.fpalonso.moneysaver.data.source.TransactionRepository
 import es.fpalonso.moneysaver.data.source.local.TransactionLocalDataSource
 import java.util.concurrent.Executor
@@ -51,5 +52,5 @@ abstract class AppModuleBinds {
 
     @Binds
     @Singleton
-    abstract fun bindTransactionRepository(transactionRepository: TransactionRepository): TransactionRepository
+    abstract fun bindTransactionRepository(transactionRepository: DefaultTransactionRepository): TransactionRepository
 }
