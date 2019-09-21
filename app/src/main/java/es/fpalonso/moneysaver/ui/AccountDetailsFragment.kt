@@ -12,6 +12,6 @@ class AccountDetailsFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         super.onCreateView(inflater, container, savedInstanceState)
-        return inflater.inflate(R.layout.fragment_account_details, container, false)
+        return inflater.inflate(R.layout.account_details_fragment, container, false)
     }
 }
