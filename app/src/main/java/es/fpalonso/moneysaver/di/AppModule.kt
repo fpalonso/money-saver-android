@@ -8,19 +8,14 @@ import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import es.fpalonso.moneysaver.data.source.AppDatabase
-import es.fpalonso.moneysaver.data.source.TransactionDataSource
 import es.fpalonso.moneysaver.data.source.DefaultTransactionRepository
+import es.fpalonso.moneysaver.data.source.TransactionDataSource
 import es.fpalonso.moneysaver.data.source.TransactionRepository
 import es.fpalonso.moneysaver.data.source.local.TransactionLocalDataSource
-import java.util.concurrent.Executor
-import java.util.concurrent.Executors
 import javax.inject.Singleton
 
 @Module(includes = [AppModuleBinds::class])
 object AppModule {
-
-    @JvmStatic
-    private val TASK_EXECUTOR_THREAD_POOL_SIZE = 4
 
     @JvmStatic
     @Provides
@@ -34,16 +29,9 @@ object AppModule {
     @JvmStatic
     @Provides
     @Singleton
-    fun provideDataTaskExecutor(): Executor {
-        return Executors.newFixedThreadPool(TASK_EXECUTOR_THREAD_POOL_SIZE)
-    }
-
-    @JvmStatic
-    @Provides
-    @Singleton
     @LocalDataSource
-    fun provideTransactionLocalDataSource(db: AppDatabase, taskExecutor: Executor): TransactionDataSource {
-        return TransactionLocalDataSource(db.transactionDao(), taskExecutor)
+    fun provideTransactionLocalDataSource(db: AppDatabase): TransactionDataSource {
+        return TransactionLocalDataSource(db.transactionDao())
     }
 }
 
